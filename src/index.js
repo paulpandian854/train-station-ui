@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import reportWebVitals from './reportWebVitals';
+import Routing from './Router/Router';
+import { Provider } from "react-redux";
+import configureStore from '../src/Redux/store';
+import ErrorBoundariesComponent from '../src/Components/Error-Boundaries/ErrorBoundariesComponent';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ErrorBoundariesComponent>
+    <Provider store={configureStore()}>
+      <React.StrictMode>
+        <Routing />
+      </React.StrictMode>
+    </Provider>
+  </ErrorBoundariesComponent>,
   document.getElementById('root')
 );
 
